@@ -1,6 +1,11 @@
 <script>
 	let { count: initialCount = 0 } = $props();
-	let count = $state(initialCount);
+	let count = $state(0);
+	
+	// Sync the prop value to internal state
+	$effect(() => {
+		count = initialCount;
+	});
 	
 	function increment() {
 		count += 1;
